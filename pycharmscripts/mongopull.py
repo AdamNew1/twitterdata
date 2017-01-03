@@ -4,7 +4,9 @@ import pymongo
 
 connection = pymongo.MongoClient("mongodb://localhost")
 db = connection.tweets
-mongtweets = db.tweets
+mongtweets = db.weatherproject
 mongfind = list(mongtweets.find({},{'text':1,'_id':0}))
 
 frame = DataFrame(mongfind)
+
+frame.to_csv('./rawmongotweets.csv',sep=',',encoding = 'UTF-8')
